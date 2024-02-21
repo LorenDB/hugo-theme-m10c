@@ -1,7 +1,10 @@
 {{ define "main" }}
   <div class="error-404">
-    <h1 class="error-404-title">O{{ partial "icon.html" (dict "ctx" $ "name" "frown") }}ps... </h1>
+    <h1 class="error-404-title">Oops... </h1>
     <p>The link you followed may be broken, or the page may have been removed.</p>
-    <a href="{{ "/" | relURL }}">Go home {{ partial "icon.html" (dict "ctx" $ "name" "arrow-right") }}</a>
+    <p><a href="{{ "/" | relURL }}">Go home {{ partial "icon.html" (dict "ctx" $ "name" "arrow-right") }}</a></p>
+    <p><a id="archiveorglink">Search for this page on the Wayback Machine {{ partial "icon.html" (dict "ctx" $ "name" "arrow-right") }}</a></p>
+    <!-- Hugo will always return /404.html for the path instead of the requested path, so we'll just do this in JS instead -->
+    <script>document.getElementById("archiveorglink").href = "https://web.archive.org/web/*/" + window.location.href;</script>
   </div>
 {{ end }}
